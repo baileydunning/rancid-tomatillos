@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import ThumbnailContainer from './components/ThumbnailContainer.js'
 import movieData from './movieData.js';
-import './css/App.css';
+import './css/App.scss';
 
 class App extends Component {
   constructor() {
@@ -12,8 +13,9 @@ class App extends Component {
 
   render() {
     return (
-      <main>
+      <main className='App'>
         <h1>Rancid Tomatillos!</h1>
+        <ThumbnailContainer movies={ this.state.movies }/>
       </main>
     )
   }
