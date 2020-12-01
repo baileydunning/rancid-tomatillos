@@ -7,8 +7,11 @@ const ThumbnailContainer = ({movies}) => {
     return (
       <Thumbnail
         poster={movie.poster_path}
+        backdrop={movie.backdrop_path}
         title={movie.title}
         rating={movie.average_rating}
+        releaseDate={movie.release_date}
+        id={movie.id}
         key={movie.id}
       />
     )

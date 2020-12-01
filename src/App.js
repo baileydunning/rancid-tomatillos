@@ -7,7 +7,8 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      movies: movieData
+      movies: movieData,
+      isMain: true
     }
   }
 
