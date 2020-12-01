@@ -6,7 +6,9 @@ const ThumbnailContainer = ({movies}) => {
   const allMovies = movies.map(movie => {
     return (
       <Thumbnail
+        poster={movie.poster_path}
         title={movie.title}
+        rating={movie.average_rating}
         key={movie.id}
       />
     )
