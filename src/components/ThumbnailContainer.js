@@ -2,7 +2,7 @@ import React from 'react';
 import Thumbnail from './Thumbnail.js'
 import '../css/ThumbnailContainer.scss'
 
-const ThumbnailContainer = ({movies}) => {
+const ThumbnailContainer = ({ movies, displayMovie }) => {
   const allMovies = movies.map(movie => {
     return (
       <Thumbnail
