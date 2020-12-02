@@ -14,8 +14,10 @@ class App extends Component {
     }
   }
 
-  displayMovie(id) {
-    console.log(id)
+  displayMovie = (id) => {
+    return (
+      this.setState({isMain: false})
+    )
   }
 
   render() {
