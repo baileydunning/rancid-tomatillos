@@ -1,10 +1,10 @@
 import React from 'react'
 import '../css/Movie.scss'
 
-const Movie = (props) => {
+const Movie = ({ movie }) => {
   return (
-    <section>
-      <h2>{props}</h2>
+    <section className='movieSection' style={{ background: `url(${ movie.backdrop_path })`}}>
+      <h2>{movie.title}</h2>
     </section>
   )
 }

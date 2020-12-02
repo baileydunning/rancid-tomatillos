@@ -32,11 +32,12 @@ class App extends Component {
     return (
       <main className='App'>
       <Header />
-
-      <ThumbnailContainer 
-        movies={ this.state.movies } 
-        displayMovie={ this.displayMovie }
-      />
+        { !this.state.selectedMovie ? 
+        <ThumbnailContainer
+          movies={this.state.movies}
+          displayMovie={this.displayMovie}
+        /> 
+        : <Movie movie={this.state.selectedMovie}/> }
       </main>
     )
   }
