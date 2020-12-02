@@ -10,13 +10,21 @@ class App extends Component {
     super()
     this.state = {
       movies: movieData,
-      isMain: true
+      selectedMovie: null
     }
   }
 
   displayMovie = (id) => {
     return (
-      this.setState({isMain: false})
+      this.setState({ selectedMovie: this.findMovieById(id) })
+    )
+  }
+
+  findMovieById = (id) => {
+    return (
+      this.state.movies.find(movie => {
+        return movie.id === id
+      })
     )
   }
 
@@ -24,6 +32,7 @@ class App extends Component {
     return (
       <main className='App'>
       <Header />
+
       <ThumbnailContainer 
         movies={ this.state.movies } 
         displayMovie={ this.displayMovie }
