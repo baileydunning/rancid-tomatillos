@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ThumbnailContainer from './components/ThumbnailContainer.js'
+import Header from './components/Header.js'
 import movieData from './movieData.js';
 import './css/App.scss';
 
@@ -15,8 +16,8 @@ class App extends Component {
   render() {
     return (
       <main className='App'>
-        <h1>Rancid Tomatillos!</h1>
-        <ThumbnailContainer movies={ this.state.movies }/>
+      <Header />
+      <ThumbnailContainer movies={ this.state.movies }/>
       </main>
     )
   }
