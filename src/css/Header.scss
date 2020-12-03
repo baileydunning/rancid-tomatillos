@@ -1,0 +1,19 @@
+@import "App";
+
+.header {
+  text-align: center;
+  &:hover {
+    animation: text-shadow-pop-left .6s both;
+  }
+}
+
+@keyframes text-shadow-pop-left { 
+  0% {
+    text-shadow:0 0 $dark-blue, 5px 5px $dark-blue,0 0 #555,0 0 #555,0 0 #555,0 0 #555,0 0 #555,0 0 #555;
+    transform:translateX(0)
+  }
+  100% {
+    text-shadow:1px 1px blue, 2px 2px blue, 3px 3px blue, 4px 4px blue, 5px 0 blue, 6px 0 blue, 7px 0 blue, 8px 0 blue;
+    transform:translateX(2px)
+  }
+}
