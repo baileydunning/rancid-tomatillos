@@ -1,10 +1,10 @@
 import React from 'react';
-import '../css/Thumbnail.scss';
+import './Thumbnail.scss';
 
 const Thumbnail = ({ poster, title, rating, id, displayMovie }) => {
   return (
     <section className='thumbnail'>
-      <button 
+      <button
         onClick={() => { return displayMovie(id) }}>
         <img alt='movie-poster' src={ poster }></img>
       </button>

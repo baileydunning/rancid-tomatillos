@@ -1,4 +1,3 @@
-@import "App";
 
 .header {
   text-align: center;
@@ -7,9 +6,9 @@
   }
 }
 
-@keyframes text-shadow-pop-left { 
+@keyframes text-shadow-pop-left {
   0% {
-    text-shadow:0 0 $dark-blue, 5px 5px $dark-blue,0 0 #555,0 0 #555,0 0 #555,0 0 #555,0 0 #555,0 0 #555;
+    text-shadow:0 0 blue, 5px 5px blue,0 0 #555,0 0 #555,0 0 #555,0 0 #555,0 0 #555,0 0 #555;
     transform:translateX(0)
   }
   100% {
