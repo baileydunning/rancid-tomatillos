@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ThumbnailContainer from './components/ThumbnailContainer.js'
-import Header from './components/Header.js'
+import Header from './components/Header.js';
+import Movie from './components/Movie.js';
 import movieData from './movieData.js';
 import './css/App.scss';
 
@@ -9,15 +10,40 @@ class App extends Component {
     super()
     this.state = {
       movies: movieData,
-      isMain: true
+      selectedMovie: null
     }
+  }
+
+  displayHome = () => {
+    return (
+      this.setState({ selectedMovie: null })
+    )
+  }
+
+  displayMovie = (id) => {
+    return (
+      this.setState({ selectedMovie: this.findMovieById(id) })
+    )
+  }
+
+  findMovieById = (id) => {
+    return (
+      this.state.movies.find(movie => {
+        return movie.id === id
+      })
+    )
   }
 
   render() {
     return (
       <main className='App'>
-      <Header />
-      <ThumbnailContainer movies={ this.state.movies }/>
+      <Header displayHome={this.displayHome}/>
+        { !this.state.selectedMovie ? 
+        <ThumbnailContainer
+          movies={this.state.movies}
+          displayMovie={this.displayMovie}
+        /> 
+        : <Movie movie={this.state.selectedMovie}/> }
       </main>
     )
   }
