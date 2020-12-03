@@ -1,10 +1,10 @@
 import React from 'react';
 import '../css/Header.scss'
 
-const Header = () => {
+const Header = ({ displayHome }) => {
   return (
     <header className='header'>
-      <h1>Rancid Tomatillos!</h1>
+      <button onClick={() => displayHome()}><h1>Rancid Tomatillos!</h1></button>
     </header>
   )
 }

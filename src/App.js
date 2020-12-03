@@ -14,6 +14,12 @@ class App extends Component {
     }
   }
 
+  displayHome = () => {
+    return (
+      this.setState({ selectedMovie: null })
+    )
+  }
+
   displayMovie = (id) => {
     return (
       this.setState({ selectedMovie: this.findMovieById(id) })
@@ -31,7 +37,7 @@ class App extends Component {
   render() {
     return (
       <main className='App'>
-      <Header />
+      <Header displayHome={this.displayHome}/>
         { !this.state.selectedMovie ? 
         <ThumbnailContainer
           movies={this.state.movies}
