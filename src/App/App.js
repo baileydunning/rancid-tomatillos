@@ -37,13 +37,16 @@ class App extends Component {
   render() {
     return (
       <main className='App'>
-      <Header displayHome={this.displayHome}/>
+        <Header displayHome={this.displayHome}/>
         { !this.state.selectedMovie ?
-        <ThumbnailContainer
-          movies={this.state.movies}
-          displayMovie={this.displayMovie}
-        />
-        : <Movie movie={this.state.selectedMovie}/> }
+          <ThumbnailContainer
+            movies={this.state.movies}
+            displayMovie={this.displayMovie}
+          /> :
+          <Movie
+            movie={this.state.selectedMovie}
+          />
+        }
       </main>
     )
   }
