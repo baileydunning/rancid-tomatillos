@@ -19,7 +19,7 @@ const ThumbnailContainer = ({ movies, displayMovie }) => {
   })
 
   return (
-    <section className='thumbnail-container'>
+    <section className='thumbnail-container' data-testid='thumbnail-container'>
       { allMovies }
     </section>
   )
