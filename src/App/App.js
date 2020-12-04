@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ThumbnailContainer from '../Thumbnail-Container/ThumbnailContainer.js'
 import Header from '../Header/Header.js';
 import Movie from '../Movie/Movie.js';
-import movieData from '../movieData.js';
+import { movieData } from '../movieData.js';
 import '../App/App.scss';
 
 class App extends Component {
