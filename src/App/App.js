@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import ThumbnailContainer from './components/ThumbnailContainer.js'
-import Header from './components/Header.js';
-import Movie from './components/Movie.js';
-import movieData from './movieData.js';
-import './css/App.scss';
+import ThumbnailContainer from '../Thumbnail-Container/ThumbnailContainer.js'
+import Header from '../Header/Header.js';
+import Movie from '../Movie/Movie.js';
+import { movieData } from '../movieData.js';
+import '../App/App.scss';
 
 class App extends Component {
   constructor() {
@@ -37,13 +37,16 @@ class App extends Component {
   render() {
     return (
       <main className='App'>
-      <Header displayHome={this.displayHome}/>
-        { !this.state.selectedMovie ? 
-        <ThumbnailContainer
-          movies={this.state.movies}
-          displayMovie={this.displayMovie}
-        /> 
-        : <Movie movie={this.state.selectedMovie}/> }
+        <Header displayHome={this.displayHome}/>
+        { !this.state.selectedMovie ?
+          <ThumbnailContainer
+            movies={this.state.movies}
+            displayMovie={this.displayMovie}
+          /> :
+          <Movie
+            movie={this.state.selectedMovie}
+          />
+        }
       </main>
     )
   }

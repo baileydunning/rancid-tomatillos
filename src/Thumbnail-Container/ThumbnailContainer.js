@@ -1,6 +1,6 @@
 import React from 'react';
-import Thumbnail from './Thumbnail.js'
-import '../css/ThumbnailContainer.scss'
+import Thumbnail from '../Thumbnail/Thumbnail.js'
+import './ThumbnailContainer.scss'
 
 const ThumbnailContainer = ({ movies, displayMovie }) => {
   const allMovies = movies.map(movie => {
@@ -19,7 +19,7 @@ const ThumbnailContainer = ({ movies, displayMovie }) => {
   })
 
   return (
-    <section className='thumbnail-container'>
+    <section className='thumbnail-container' data-testid='thumbnail-container'>
       { allMovies }
     </section>
   )

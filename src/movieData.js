@@ -1,5 +1,5 @@
 
-const movieData = [
+export const movieData = [
     {
       "id": 694919,
       "poster_path": "https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg",
@@ -322,4 +322,29 @@ const movieData = [
     }
   ];
 
-export default movieData;
+  export const sampleData = [
+    {
+      "id": 659991,
+      "poster_path": "https://image.tmdb.org/t/p/original//erl30EcM8b8S84mvw8QXhNIeSfi.jpg",
+      "backdrop_path": "https://image.tmdb.org/t/p/original//5nRyaVklxyA9OkxqZaPv1KBRqpd.jpg",
+      "title": "Made in Italy",
+      "average_rating": 5,
+      "release_date": "2020-08-06"
+    },
+    {
+      "id": 501953,
+      "poster_path": "https://image.tmdb.org/t/p/original//2wXrBtfrvwMWE1i3iHjKjoRZjYk.jpg",
+      "backdrop_path": "https://image.tmdb.org/t/p/original//oeaLQKoPFQxvhEz3yyR1QuestXG.jpg",
+      "title": "Eternal Beauty",
+      "average_rating": 3,
+      "release_date": "2020-08-21"
+    },
+    {
+      "id": 585244,
+      "poster_path": "https://image.tmdb.org/t/p/original//dqA2FCzz4OMmXLitKopzf476RVB.jpg",
+      "backdrop_path": "https://image.tmdb.org/t/p/original//21Q8bzu10YF9i4O5amBkJBombYo.jpg",
+      "title": "I Still Believe",
+      "average_rating": 3.8333333333333335,
+      "release_date": "2020-03-12"
+    }
+  ]
