@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ThumbnailContainer from '../Thumbnail-Container/ThumbnailContainer.js'
 import Header from '../Header/Header.js';
 import Movie from '../Movie/Movie.js';
-import { getAllMovies } from '../apiCalls.js'
+import { getAllMovies, getMovieData } from '../apiCalls.js'
 import '../App/App.scss';
 
 class App extends Component {
@@ -34,11 +34,9 @@ class App extends Component {
   }
 
   findMovieById = (id) => {
-    return (
-      this.state.movies.find(movie => {
-        return movie.id === id
-      }) 
-    )
+    getMovieData(id)
+    .then(data => this.setState({ selectedMovie: data.movie }))
+    .catch(error => this.setState({ error: error.message }))
   }
 
   render() {

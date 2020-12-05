@@ -7,7 +7,7 @@ jest.mock('../apiCalls.js')
 
 
 describe('App', () => {
-  beforeEach(() => {
+  it('should render App with fetched data', async () => {
     getAllMovies.mockResolvedValueOnce({
       movies: [
         {
@@ -22,15 +22,15 @@ describe('App', () => {
     })
 
     render(<App />)
-  })
 
-  it('should render the App component', () => {
     const header = screen.getByText('Rancid Tomatillos!')
+    const fetchedMovie = await waitFor(() => screen.getByTestId("individual-thumbnail"))
+
     expect(header).toBeInTheDocument()
+    expect(fetchedMovie).toBeInTheDocument()
   })
 
-  it('should fetch data', async () => {
-    const fetchedMovie = await waitFor(() => screen.getByTestId("individual-thumbnail"))
-    expect(fetchedMovie).toBeInTheDocument()
+  it('should render Movie when clicked', () => {
+
   })
 })
