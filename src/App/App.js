@@ -2,16 +2,23 @@ import React, { Component } from 'react';
 import ThumbnailContainer from '../Thumbnail-Container/ThumbnailContainer.js'
 import Header from '../Header/Header.js';
 import Movie from '../Movie/Movie.js';
-import { movieData } from '../movieData.js';
+import { getAllMovies, getMovieData } from '../apiCalls.js'
 import '../App/App.scss';
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      movies: movieData,
-      selectedMovie: null
+      movies: [],
+      selectedMovie: null,
+      error: ''
     }
+  }
+
+  componentDidMount = () => {
+    getAllMovies()
+    .then(data => this.setState({ movies: data.movies }))
+    .catch(error => this.setState({ error: error.message }))
   }
 
   displayHome = () => {
@@ -27,24 +34,25 @@ class App extends Component {
   }
 
   findMovieById = (id) => {
-    return (
-      this.state.movies.find(movie => {
-        return movie.id === id
-      })
-    )
+    getMovieData(id)
+    .then(data => this.setState({ selectedMovie: data.movie }))
+    .catch(error => this.setState({ error: error.message }))
   }
 
   render() {
     return (
       <main className='App'>
-        <Header displayHome={this.displayHome}/>
+        <Header displayHome={ this.displayHome }/>
+        { this.state.error && <h2>{ this.state.error }</h2>}
+        { !this.state.movies.length && <h2>Loading...</h2> }
         { !this.state.selectedMovie ?
           <ThumbnailContainer
-            movies={this.state.movies}
-            displayMovie={this.displayMovie}
+            movies={ this.state.movies }
+            displayMovie={ this.displayMovie }
           /> :
           <Movie
-            movie={this.state.selectedMovie}
+            key={ this.state.selectedMovie.id }
+            movie={ this.state.selectedMovie }
           />
         }
       </main>
