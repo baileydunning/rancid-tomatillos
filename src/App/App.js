@@ -45,14 +45,8 @@ class App extends Component {
     return (
       <main className='App'>
         <Header displayHome={this.displayHome}/>
-        { !this.state.movies.length ? 
-        <h2>Loading...</h2> : 
-        <ThumbnailContainer
-          movies={this.state.movies}
-          displayMovie={this.displayMovie}
-        />
-        }
-        {/* { !this.state.selectedMovie ?
+        { !this.state.movies.length && <h2>Loading...</h2> }
+        { !this.state.selectedMovie ?
           <ThumbnailContainer
             movies={this.state.movies}
             displayMovie={this.displayMovie}
@@ -60,7 +54,7 @@ class App extends Component {
           <Movie
             movie={this.state.selectedMovie}
           />
-        } */}
+        }
       </main>
     )
   }
