@@ -43,6 +43,7 @@ class App extends Component {
     return (
       <main className='App'>
         <Header displayHome={ this.displayHome }/>
+        { this.state.error && <h2>{ this.state.error }</h2>}
         { !this.state.movies.length && <h2>Loading...</h2> }
         { !this.state.selectedMovie ?
           <ThumbnailContainer
