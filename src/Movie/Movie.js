@@ -2,11 +2,11 @@ import React from 'react'
 import './Movie.scss'
 
 const Movie = ({ movie }) => {
-  const genres = movie.genres.map(genre =>{
+  const genres = movie.genres.map(genre => {
     return (
-      <p>{ genre }</p>
+      <li key={genre}>{ genre }</li>
     )
-  }) 
+  })
 
   const convertNumber = (num, type) => {
     return (
@@ -27,7 +27,8 @@ const Movie = ({ movie }) => {
           <p><b>Runtime:</b> { movie.runtime } minutes</p>
           { convertNumber(movie.budget, 'Budget') }
           { convertNumber(movie.revenue, 'Revenue') }
-          <p><b>Genres:</b> { genres }</p>
+          <p><b>Genres:</b></p>
+          <ul>{genres}</ul>
         </div>
       </article>
     </section>
