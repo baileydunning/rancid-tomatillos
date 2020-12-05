@@ -8,6 +8,12 @@ const Movie = ({ movie }) => {
     )
   }) 
 
+  const convertNumber = (num, type) => {
+    return (
+      num > 0 && <p><b>{ type }:</b> ${new Intl.NumberFormat('en-US').format(num)}</p>
+    )
+  }
+
   return (
     <section className='movie-section' style={{ background: `url(${ movie.backdrop_path })`}}>
       <article className="movie-info">
@@ -19,8 +25,8 @@ const Movie = ({ movie }) => {
           <p><b>Average Rating:</b> { movie.average_rating.toFixed(1) }</p>
           <p><b>Release Date:</b> { new Date(movie.release_date).toDateString() }</p>
           <p><b>Runtime:</b> { movie.runtime } minutes</p>
-          { movie.budget > 0 && <p><b>Budget:</b> ${movie.budget}</p> }
-          { movie.revenue > 0 && <p><b>Revenue:</b> ${ movie.revenue }</p> }
+          { convertNumber(movie.budget, 'Budget') }
+          { convertNumber(movie.revenue, 'Revenue') }
           <p><b>Genres:</b> { genres }</p>
         </div>
       </article>

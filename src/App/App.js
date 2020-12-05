@@ -42,15 +42,16 @@ class App extends Component {
   render() {
     return (
       <main className='App'>
-        <Header displayHome={this.displayHome}/>
+        <Header displayHome={ this.displayHome }/>
         { !this.state.movies.length && <h2>Loading...</h2> }
         { !this.state.selectedMovie ?
           <ThumbnailContainer
-            movies={this.state.movies}
-            displayMovie={this.displayMovie}
+            movies={ this.state.movies }
+            displayMovie={ this.displayMovie }
           /> :
           <Movie
-            movie={this.state.selectedMovie}
+            key={ this.state.selectedMovie.id }
+            movie={ this.state.selectedMovie }
           />
         }
       </main>
