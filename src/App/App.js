@@ -37,7 +37,7 @@ class App extends Component {
     return (
       this.state.movies.find(movie => {
         return movie.id === id
-      })
+      }) 
     )
   }
 
