@@ -2,7 +2,6 @@ import App from './App';
 import React from 'react'
 import { screen, render, waitFor, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import userEvent from '@testing-library/user-event'
 import { getAllMovies, getMovieData } from '../apiCalls.js'
 jest.mock('../apiCalls.js')
 

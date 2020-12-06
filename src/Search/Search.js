@@ -16,9 +16,9 @@ class Search extends Component {
 
   render() {
     return (
-      <form>
+      <form className="search-container">
         <label htmlFor="search-bar"></label>
-        <input type="text" name="search-bar" className="search-bar" value={this.state.input} onChange={ this.handleChange } data-testid="search-bar"></input>
+        <input type="text" name="search-bar" className="search-bar" value={this.state.input} onChange={ this.handleChange } placeholder="Search by movie title"></input>
       </form>
     )
   }

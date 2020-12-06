@@ -19,9 +19,9 @@ describe('Search', () => {
   })
 
   it('should update text on change', () => {
-    const searchBar = screen.getByTestId('search-bar')
+    const searchBar = screen.getByPlaceholderText('search-bar')
     userEvent.type(searchBar, "hello world")
-    
+
     expect(mockUpdateText).toHaveBeenCalled()
     expect(searchBar.value).toContain("hello world")
   })

@@ -11,7 +11,7 @@ class App extends Component {
     super()
     this.state = {
       movies: [],
-      userInput: '',
+      input: '',
       selectedMovie: null,
       error: ''
     }
@@ -44,7 +44,7 @@ class App extends Component {
   }
 
   get filteredMovies() {
-    const newInput = this.state.userInput.toLowerCase().trim()
+    const newInput = this.state.input.toLowerCase().trim()
     const userSearchResults = this.state.movies.filter(movie => {
       return movie.title.toLowerCase().includes(newInput)
     })
@@ -52,8 +52,8 @@ class App extends Component {
     return newInput ? userSearchResults : this.state.movies
   }
 
-  updateText = (input) => {
-    this.setState({ userInput: input })
+  updateText = (userInput) => {
+    this.setState({ input: userInput })
   }
 
   render() {
