@@ -10,16 +10,15 @@ class Search extends Component {
   }
 
   handleChange = (event) => {
-    console.log(event.target.value)
     this.setState({input: event.target.value})
-    this.props.searchMovies(event.target.value)
+    this.props.updateText(this.state.input)
   }
 
   render() {
     return (
       <form>
         <label htmlFor="search-bar"></label>
-        <input type="text" name="search-bar" className="search-bar" value={this.state.input} onChange={ this.handleChange }></input>
+        <input type="text" name="search-bar" className="search-bar" value={this.state.input} onChange={ this.handleChange } data-testid="search-bar"></input>
       </form>
     )
   }

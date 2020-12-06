@@ -11,7 +11,7 @@ class App extends Component {
     super()
     this.state = {
       movies: [],
-      filteredMovies: [],
+      userInput: '',
       selectedMovie: null,
       error: ''
     }
@@ -21,7 +21,6 @@ class App extends Component {
     getAllMovies()
     .then((data) => {
       this.setState({ movies: data.movies })
-      this.searchMovies('')
     })
     .catch(error => this.setState({ error: error.message }))
   }
@@ -44,13 +43,17 @@ class App extends Component {
     .catch(error => this.setState({ error: error.message }))
   }
 
-  searchMovies = (input) => {
+  get filteredMovies() {
+    const newInput = this.state.userInput.toLowerCase().trim()
     const userSearchResults = this.state.movies.filter(movie => {
-      const newInput = input.toLowerCase().trim()
       return movie.title.toLowerCase().includes(newInput)
     })
     
-    return input ? this.setState({ filteredMovies: userSearchResults }) : this.setState({ filteredMovies: this.state.movies })
+    return newInput ? userSearchResults : this.state.movies
+  }
+
+  updateText = (input) => {
+    this.setState({ userInput: input })
   }
 
   render() {
@@ -62,10 +65,10 @@ class App extends Component {
         { !this.state.selectedMovie ?
           <section>
             <Search 
-              searchMovies={ this.searchMovies }
+              updateText={ this.updateText }
             />
             <ThumbnailContainer
-              movies={this.state.filteredMovies}
+              movies={this.filteredMovies}
               displayMovie={this.displayMovie}
             />
           </section> :
