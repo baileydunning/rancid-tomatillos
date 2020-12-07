@@ -3,7 +3,7 @@ import ThumbnailContainer from '../Thumbnail-Container/ThumbnailContainer.js'
 import Header from '../Header/Header.js'
 import Movie from '../Movie/Movie.js'
 import Search from '../Search/Search.js'
-import { getAllMovies, getMovieData } from '../apiCalls.js'
+import { getAllMovies, getMovieData, getVideoData} from '../apiCalls.js'
 import '../App/App.scss'
 
 class App extends Component {
@@ -13,6 +13,7 @@ class App extends Component {
       movies: [],
       input: '',
       selectedMovie: null,
+      selectedVideos: [],
       error: ''
     }
   }
@@ -37,7 +38,16 @@ class App extends Component {
 
   findMovieById = (id) => {
     getMovieData(id)
-    .then(data => this.setState({ selectedMovie: data.movie }))
+    .then((data) => {
+      this.setState({ selectedMovie: data.movie })
+      this.findVideos()
+    })
+    .catch(error => this.setState({ error: error.message }))
+  }
+
+  findVideos = () => {
+    getVideoData(this.state.selectedMovie.id)
+    .then(data => this.setState({ selectedVideos: data.videos }))
     .catch(error => this.setState({ error: error.message }))
   }
 
@@ -76,6 +86,7 @@ class App extends Component {
           <Movie
             key={ this.state.selectedMovie.id }
             movie={ this.state.selectedMovie }
+            video={ this.state.selectedVideos[0]}
           />
         }
       </main>

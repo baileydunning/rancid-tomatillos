@@ -1,7 +1,7 @@
 import React from 'react'
 import './Movie.scss'
 
-const Movie = ({ movie }) => {
+const Movie = ({ movie, video }) => {
   const genres = movie.genres.map(genre => {
     return (
       <li key={genre}>{ genre }</li>
@@ -33,6 +33,7 @@ const Movie = ({ movie }) => {
       </article>
       <div className="genres">
         <ul>{genres}</ul>
+        <iframe width="560" height="315" src={`https://www.youtube.com/embed/${video.key}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </section>
   )
