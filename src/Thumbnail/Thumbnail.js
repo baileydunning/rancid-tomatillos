@@ -10,7 +10,7 @@ const Thumbnail = ({ poster, title, rating, id, displayMovie }) => {
       </button>
       <div className="thumbnail-display-info">
         <h3>{title}</h3>
-        <p><b>Average Rating: </b>{rating.toFixed(1)}</p>
+        <p><i>Avg Rating: {rating.toFixed(0)}</i></p>
       </div>
     </section>
   )

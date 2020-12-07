@@ -8,18 +8,20 @@ describe('Search', () => {
   const mockUpdateText = jest.fn()
 
   beforeEach(() => {
-    render(<Search
+    render(
+      <Search
         updateText={mockUpdateText}
-      />)
+      />
+    )
   })
 
   it('should render the search bar', () => {
-    const searchBar = screen.getByTestId('search-bar')
+    const searchBar = screen.getByPlaceholderText('Search by movie title')
     expect(searchBar).toBeInTheDocument()
   })
 
   it('should update text on change', () => {
-    const searchBar = screen.getByPlaceholderText('search-bar')
+    const searchBar = screen.getByPlaceholderText('Search by movie title')
     userEvent.type(searchBar, "hello world")
 
     expect(mockUpdateText).toHaveBeenCalled()

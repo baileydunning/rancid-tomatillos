@@ -25,7 +25,7 @@ describe('App', () => {
   })
 
   it('should render App with fetched data', async () => {
-    const header = screen.getByText('Rancid Tomatillos!')
+    const header = screen.getByText('RANCID TOMATILLOS')
     const fetchedMovie = await waitFor(() => screen.getByTestId("individual-thumbnail"))
 
     expect(header).toBeInTheDocument()
@@ -78,7 +78,7 @@ describe('App', () => {
 
     fireEvent.click(screen.getByAltText('movie-poster'))
     const fetchedMovie = await waitFor(() => screen.getByText('82 minutes'))
-    fireEvent.click(screen.getByText("Rancid Tomatillos!"))
+    fireEvent.click(screen.getByText("RANCID TOMATILLOS"))
     const thumbnailContainer = screen.getByTestId('thumbnail-container')
 
     expect(thumbnailContainer).toBeInTheDocument()

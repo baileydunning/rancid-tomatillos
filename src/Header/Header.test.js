@@ -14,7 +14,7 @@ describe('Header', () => {
 
   it('should render a header', () => {
     //setup & execution
-    let header = screen.getByText("Rancid Tomatillos!")
+    let header = screen.getByText("RANCID TOMATILLOS")
     //assertion
     expect(header).toBeInTheDocument();
   })

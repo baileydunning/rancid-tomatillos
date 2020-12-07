@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import ThumbnailContainer from '../Thumbnail-Container/ThumbnailContainer.js'
-import Header from '../Header/Header.js';
-import Movie from '../Movie/Movie.js';
-import Search from '../Search/Search.js';
+import Header from '../Header/Header.js'
+import Movie from '../Movie/Movie.js'
+import Search from '../Search/Search.js'
 import { getAllMovies, getMovieData } from '../apiCalls.js'
-import '../App/App.scss';
+import '../App/App.scss'
 
 class App extends Component {
   constructor() {
@@ -19,9 +19,7 @@ class App extends Component {
 
   componentDidMount = () => {
     getAllMovies()
-    .then((data) => {
-      this.setState({ movies: data.movies })
-    })
+    .then(data => this.setState({ movies: data.movies }))
     .catch(error => this.setState({ error: error.message }))
   }
 
@@ -64,7 +62,7 @@ class App extends Component {
         displayHome={ this.displayHome }
         />
         { this.state.error && <h2>{ this.state.error }</h2>}
-        { !this.state.movies.length && <h2>Loading...</h2> }
+        { !this.state.movies && <h2>Loading...</h2> }
         { !this.state.selectedMovie ?
           <section>
             <Search 
