@@ -6,11 +6,12 @@ const Thumbnail = ({ poster, title, rating, id, displayMovie }) => {
     <section className='thumbnail' data-testid="individual-thumbnail">
       <button
         onClick={() => { return displayMovie(id) }}>
-        <img alt='movie-poster' src={ poster }></img>
+        <img alt='movie-poster' className="movie-poster-image" src={ poster }></img>
       </button>
-      <p>{ title }</p>
-      <p>{ rating.toFixed(1) }</p>
-
+      <div className="thumbnail-display-info">
+        <h3>{title}</h3>
+        <p><b>Average Rating: </b>{rating.toFixed(1)}</p>
+      </div>
     </section>
   )
 }
