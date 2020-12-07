@@ -1,18 +1,16 @@
-
 .header {
   text-align: center;
-  &:hover {
-    animation: text-shadow-pop-left .6s both;
-  }
+  height: 50vh;
+  margin-bottom: 20px;
+  background-size: cover !important;
+  width: 100vw;
+  background-repeat: no-repeat !important;
 }
 
-@keyframes text-shadow-pop-left {
-  0% {
-    text-shadow:0 0 blue, 5px 5px blue,0 0 #555,0 0 #555,0 0 #555,0 0 #555,0 0 #555,0 0 #555;
-    transform:translateX(0)
-  }
-  100% {
-    text-shadow:1px 1px blue, 2px 2px blue, 3px 3px blue, 4px 4px blue, 5px 0 blue, 6px 0 blue, 7px 0 blue, 8px 0 blue;
-    transform:translateX(2px)
-  }
+h1 {
+  color: rgb(255, 255, 255);
+  line-height: 1.3em;
+  letter-spacing: 5px;
+  font-size: 5em;
+  text-shadow: -6px 6px black;
 }

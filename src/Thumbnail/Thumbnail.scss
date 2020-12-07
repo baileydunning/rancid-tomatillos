@@ -1,5 +1,5 @@
 img {
-  height: 100px;
+  height: 200px;
   width: auto;
 }
 
@@ -7,11 +7,12 @@ button {
   border: none;
 }
 
-p {
+.thumbnail-display-info {
+  text-align: center;
   overflow-wrap: anywhere;
 }
 
 .thumbnail {
-  width: 90px;
-  padding: 20px;
+  width: 150px;
+  margin: 20px;
 }

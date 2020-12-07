@@ -21,7 +21,7 @@ describe('Thumbnail', () => {
 
   it('should render a movie thumbnail', () => {
     const movieTitle = screen.getByText('Best Movie Ever!');
-    const movieRating = screen.getByText(7.4);
+    const movieRating = screen.getByText('Avg Rating: 7');
     const moviePoster = screen.getByAltText('movie-poster')
 
     expect(movieTitle).toBeInTheDocument()

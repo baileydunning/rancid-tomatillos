@@ -1,15 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import ThumbnailContainer from '../Thumbnail-Container/ThumbnailContainer.js'
-import Header from '../Header/Header.js';
-import Movie from '../Movie/Movie.js';
+import Header from '../Header/Header.js'
+import Movie from '../Movie/Movie.js'
+import Search from '../Search/Search.js'
 import { getAllMovies, getMovieData } from '../apiCalls.js'
-import '../App/App.scss';
+import '../App/App.scss'
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
       movies: [],
+      input: '',
       selectedMovie: null,
       error: ''
     }
@@ -23,7 +25,7 @@ class App extends Component {
 
   displayHome = () => {
     return (
-      this.setState({ selectedMovie: null })
+      this.setState({ selectedMovie: null, input: '' })
     )
   }
 
@@ -39,17 +41,38 @@ class App extends Component {
     .catch(error => this.setState({ error: error.message }))
   }
 
+  get filteredMovies() {
+    const newInput = this.state.input.toLowerCase().trim()
+    const userSearchResults = this.state.movies.filter(movie => {
+      return movie.title.toLowerCase().includes(newInput)
+    })
+    
+    return newInput ? userSearchResults : this.state.movies
+  }
+
+  updateText = (userInput) => {
+    this.setState({ input: userInput })
+  }
+
   render() {
     return (
       <main className='App'>
-        <Header displayHome={ this.displayHome }/>
+        <Header
+        selectedMovie={ this.state.selectedMovie } 
+        displayHome={ this.displayHome }
+        />
         { this.state.error && <h2>{ this.state.error }</h2>}
-        { !this.state.movies.length && <h2>Loading...</h2> }
+        { !this.state.movies && <h2>Loading...</h2> }
         { !this.state.selectedMovie ?
-          <ThumbnailContainer
-            movies={ this.state.movies }
-            displayMovie={ this.displayMovie }
-          /> :
+          <section>
+            <Search 
+              updateText={ this.updateText }
+            />
+            <ThumbnailContainer
+              movies={this.filteredMovies}
+              displayMovie={this.displayMovie}
+            />
+          </section> :
           <Movie
             key={ this.state.selectedMovie.id }
             movie={ this.state.selectedMovie }

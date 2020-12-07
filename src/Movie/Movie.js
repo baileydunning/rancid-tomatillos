@@ -15,22 +15,25 @@ const Movie = ({ movie }) => {
   }
 
   return (
-    <section className='movie-section' style={{ background: `url(${ movie.backdrop_path })`}}>
+    <section className='movie-section'>
       <article className="movie-info">
-        <img src={ movie.poster_path } alt="movie-poster" className="movie-poster"></img>
+        <img src={movie.poster_path} alt="movie-poster" className="movie-poster"></img>
         <div className="movie-text">
           <h2>{ movie.title }</h2>
-          <h3>{ movie.tagline }</h3>
+          { movie.tagline && <h3>{ movie.tagline }</h3> }
           <p>{ movie.overview }</p>
+        </div>
+        </article>
+        <article className="more-info">
           <p><b>Average Rating:</b> { movie.average_rating.toFixed(1) }</p>
           <p><b>Release Date:</b> { new Date(movie.release_date).toDateString() }</p>
           <p><b>Runtime:</b> { movie.runtime } minutes</p>
           { convertNumber(movie.budget, 'Budget') }
           { convertNumber(movie.revenue, 'Revenue') }
-          <p><b>Genres:</b></p>
-          <ul>{genres}</ul>
-        </div>
       </article>
+      <div className="genres">
+        <ul>{genres}</ul>
+      </div>
     </section>
   )
 }
