@@ -11,7 +11,7 @@ class Search extends Component {
 
   handleChange = (event) => {
     this.setState({ input: event.target.value })
-    this.props.updateText(this.state.input)
+    this.props.updateText(event.target.value)
   }
 
   render() {

@@ -46,7 +46,7 @@ class App extends Component {
     const userSearchResults = this.state.movies.filter(movie => {
       return movie.title.toLowerCase().includes(newInput)
     })
-    
+
     return newInput ? userSearchResults : this.state.movies
   }
 
@@ -58,14 +58,14 @@ class App extends Component {
     return (
       <main className='App'>
         <Header
-        selectedMovie={ this.state.selectedMovie } 
+        selectedMovie={ this.state.selectedMovie }
         displayHome={ this.displayHome }
         />
         { this.state.error && <h2>{ this.state.error }</h2>}
         { !this.state.movies && <h2>Loading...</h2> }
         { !this.state.selectedMovie ?
           <section>
-            <Search 
+            <Search
               updateText={ this.updateText }
             />
             <ThumbnailContainer
