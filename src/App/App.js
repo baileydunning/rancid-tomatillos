@@ -27,7 +27,7 @@ class App extends Component {
 
   displayHome = () => {
     return (
-      this.setState({ selectedMovie: null })
+      this.setState({ selectedMovie: null, input: '' })
     )
   }
 
@@ -59,7 +59,10 @@ class App extends Component {
   render() {
     return (
       <main className='App'>
-        <Header displayHome={ this.displayHome }/>
+        <Header
+        selectedMovie={ this.state.selectedMovie } 
+        displayHome={ this.displayHome }
+        />
         { this.state.error && <h2>{ this.state.error }</h2>}
         { !this.state.movies.length && <h2>Loading...</h2> }
         { !this.state.selectedMovie ?
