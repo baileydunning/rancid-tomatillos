@@ -13,7 +13,7 @@ const Movie = ({ movie, video }) => {
       num > 0 && <p><b>{ type }:</b> ${new Intl.NumberFormat('en-US').format(num)}</p>
     )
   }
-
+  console.log(video);
   return (
     <section className='movie-section'>
       <article className="movie-info">
@@ -33,7 +33,7 @@ const Movie = ({ movie, video }) => {
       </article>
       <div className="genres">
         <ul>{genres}</ul>
-        <iframe width="560" height="315" src={`https://www.youtube.com/embed/${video.key}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        { video && <iframe width="560" height="315" src={`https://www.youtube.com/embed/${video.key}`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> }
       </div>
     </section>
   )

@@ -26,13 +26,14 @@ class App extends Component {
 
   displayHome = () => {
     return (
-      this.setState({ selectedMovie: null, input: '' })
+      this.setState({ selectedMovie: null, input: '', selectedVideos: [] })
     )
   }
 
   displayMovie = (id) => {
     return (
-      this.setState({ selectedMovie: this.findMovieById(id) })
+      // this.setState({ selectedMovie: this.findMovieById(id) })
+      this.findMovieById(id)
     )
   }
 
@@ -86,7 +87,7 @@ class App extends Component {
           <Movie
             key={ this.state.selectedMovie.id }
             movie={ this.state.selectedMovie }
-            video={ this.state.selectedVideos[0]}
+            video={ this.state.selectedVideos.find(video => video.type === 'Trailer')}
           />
         }
       </main>
