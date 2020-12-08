@@ -13,4 +13,8 @@ h1 {
   letter-spacing: 5px;
   font-size: 5em;
   text-shadow: -6px 6px black;
+  &:hover {
+    color: green;
+    cursor: pointer;
+  }
 }

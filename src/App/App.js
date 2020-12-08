@@ -87,7 +87,7 @@ class App extends Component {
           <Movie
             key={ this.state.selectedMovie.id }
             movie={ this.state.selectedMovie }
-            video={ this.state.selectedVideos.find(video => video.type === 'Trailer')}
+            video={ this.state.selectedVideos.find(video => video.type === 'Trailer') }
           />
         }
       </main>
