@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App/App.js';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+
+const router = <BrowserRouter><App /></BrowserRouter>
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    { router }
   </React.StrictMode>,
   document.getElementById('root')
 );

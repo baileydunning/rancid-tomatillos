@@ -5,6 +5,7 @@ import Movie from '../Movie/Movie.js'
 import Search from '../Search/Search.js'
 import { getAllMovies, getMovieData, getVideoData} from '../apiCalls.js'
 import '../App/App.scss'
+import { Route, Switch } from 'react-router-dom'
 
 class App extends Component {
   constructor() {
@@ -72,24 +73,32 @@ class App extends Component {
         selectedMovie={ this.state.selectedMovie }
         displayHome={ this.displayHome }
         />
-        { this.state.error && <h2>{ this.state.error }</h2>}
-        { !this.state.movies && <h2>Loading...</h2> }
-        { !this.state.selectedMovie ?
-          <section>
-            <Search
-              updateText={ this.updateText }
+        <Switch>
+          <Route
+            path='/movie'
+            render={ () =>
+            <Movie
+              key={ this.state.selectedMovie.id }
+              movie={ this.state.selectedMovie }
+              video={ this.state.selectedVideos.find(video => video.type === 'Trailer') }
             />
-            <ThumbnailContainer
+          }
+          />
+          <Route
+          path="/"
+          render={ () =>
+            <section>
+              <Search
+              updateText={ this.updateText }
+              />
+              <ThumbnailContainer
               movies={this.filteredMovies}
               displayMovie={this.displayMovie}
-            />
-          </section> :
-          <Movie
-            key={ this.state.selectedMovie.id }
-            movie={ this.state.selectedMovie }
-            video={ this.state.selectedVideos.find(video => video.type === 'Trailer') }
+              />
+            </section>
+          }
           />
-        }
+        </Switch>
       </main>
     )
   }
