@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { getAllMovies, getMovieData, getVideoData} from '../apiCalls.js'
 import './Movie.scss'
+import { Link } from 'react-router-dom'
 
 class Movie extends Component {
   constructor() {
@@ -54,10 +55,11 @@ class Movie extends Component {
               <p><b>Runtime:</b> { this.state.movie.runtime } minutes</p>
               { convertNumber(this.state.movie.budget, 'Budget') }
               { convertNumber(this.state.movie.revenue, 'Revenue') }
-              <p><b>Genres:</b><ul>{this.genres}</ul></p>
+              { genres && <p><b>Genres:</b><ul>{genres}</ul></p>}
             </article>
             { this.state.video && <iframe data-testid="trailer" width="560" height="315" src={`https://www.youtube.com/embed/${this.state.video.key}`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> }
           </div>
+          <Link to="/"><button onClick={ () => this.props.displayHome() } className="back-button">Back to Main Page</button></Link>
         </section>
       )
     } else {
