@@ -79,24 +79,24 @@ class App extends Component {
             render={ ({match}) => {
             return <Movie
               key={ match.params.id }
-              movie={ this.state.selectedMovie }
-              video={ this.state.selectedVideos.find(video => video.type === 'Trailer') }
+              id={ match.params.id }
             />
           }}
           />
           <Route
-          path="/"
-          render={ () =>
-            <section>
-              <Search
-              updateText={ this.updateText }
-              />
-              <ThumbnailContainer
-              movies={this.filteredMovies}
-              displayMovie={this.displayMovie}
-              />
-            </section>
-          }
+            path="/"
+            render={ () => {
+              return (
+              <section>
+                <Search
+                updateText={ this.updateText }
+                />
+                <ThumbnailContainer
+                movies={this.filteredMovies}
+                displayMovie={this.displayMovie}
+                />
+              </section> )
+            }}
           />
         </Switch>
       </main>
