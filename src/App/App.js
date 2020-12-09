@@ -75,14 +75,14 @@ class App extends Component {
         />
         <Switch>
           <Route
-            path='/movie'
-            render={ () =>
-            <Movie
-              key={ this.state.selectedMovie.id }
+            path={'/movie/:id'}
+            render={ ({match}) => {
+            return <Movie
+              key={ match.params.id }
               movie={ this.state.selectedMovie }
               video={ this.state.selectedVideos.find(video => video.type === 'Trailer') }
             />
-          }
+          }}
           />
           <Route
           path="/"
