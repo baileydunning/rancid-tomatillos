@@ -29,6 +29,7 @@ class App extends Component {
   }
 
   displayHome = () => {
+    window.scrollTo(0, 0);
     return (
       this.setState({ selectedMovie: null, input: ''})
     )
