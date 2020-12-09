@@ -3,23 +3,30 @@ import { getAllMovies, getMovieData, getVideoData} from '../apiCalls.js'
 import './Movie.scss'
 
 class Movie extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
       movie: null,
-      video: []
+      video: [],
+      error: ''
     }
   }
   componentDidMount = () => {
-    console.log(this.props.id)
     getMovieData(this.props.id)
     .then((data) => {
       this.setState({ movie: data.movie })
+      this.props.selectMovie(this.state.movie)
+      console.log(this.state.movie)
       this.findVideos()
     })
     .catch(error => this.setState({ error: error.message }))
   }
 
+  findVideos = () => {
+    getVideoData(this.state.movie.id)
+    .then(data => this.setState({ video: data.videos.find(video => video.type === 'Trailer') }))
+    .catch(error => this.setState({ error: error.message }))
+  }
 
   render() {
     if (this.state.movie) {

@@ -14,7 +14,6 @@ class App extends Component {
       movies: [],
       input: '',
       selectedMovie: null,
-      selectedVideos: [],
       error: ''
     }
   }
@@ -25,20 +24,17 @@ class App extends Component {
     .catch(error => this.setState({ error: error.message }))
   }
 
+  selectMovie = (movie) => {
+    this.setState({ selectedMovie: movie })
+  }
+
   displayHome = () => {
     return (
-      this.setState({ selectedMovie: null, input: '', selectedVideos: [] })
+      this.setState({ selectedMovie: null, input: ''})
     )
   }
 
   displayMovie = (id) => {
-    return (
-      // this.setState({ selectedMovie: this.findMovieById(id) })
-      this.findMovieById(id)
-    )
-  }
-
-  findMovieById = (id) => {
     getMovieData(id)
     .then((data) => {
       this.setState({ selectedMovie: data.movie })
@@ -46,12 +42,15 @@ class App extends Component {
     })
     .catch(error => this.setState({ error: error.message }))
   }
-
-  findVideos = () => {
-    getVideoData(this.state.selectedMovie.id)
-    .then(data => this.setState({ selectedVideos: data.videos }))
-    .catch(error => this.setState({ error: error.message }))
-  }
+  //
+  // findMovieById = (id) => {
+  //   getMovieData(id)
+  //   .then((data) => {
+  //     this.setState({ selectedMovie: data.movie })
+  //     this.findVideos()
+  //   })
+  //   .catch(error => this.setState({ error: error.message }))
+  // }
 
   get filteredMovies() {
     const newInput = this.state.input.toLowerCase().trim()
@@ -78,6 +77,7 @@ class App extends Component {
             path={'/movie/:id'}
             render={ ({match}) => {
             return <Movie
+              selectMovie={ this.selectMovie }
               key={ match.params.id }
               id={ match.params.id }
             />
