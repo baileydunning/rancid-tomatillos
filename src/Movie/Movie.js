@@ -16,9 +16,8 @@ class Movie extends Component {
     getMovieData(this.props.id)
     .then((data) => {
       this.setState({ movie: data.movie })
-      this.props.selectMovie(this.state.movie)
-      console.log(this.state.movie)
       this.findVideos()
+      this.props.selectMovie(this.state.movie)
     })
     .catch(error => this.setState({ error: error.message }))
   }
@@ -39,7 +38,7 @@ class Movie extends Component {
         return (num > 0 && <p><b>{ type }:</b> ${new Intl.NumberFormat('en-US').format(num)}</p>)
       }
       return (
-        <section className='movie-section'>
+        <section className='movie-section' data-testid="movie-section">
           <article className="movie-info">
             <img src={this.state.movie.poster_path} alt="movie-poster" className="movie-poster"></img>
             <div className="movie-text">
