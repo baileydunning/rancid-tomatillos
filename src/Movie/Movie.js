@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getAllMovies, getMovieData, getVideoData} from '../apiCalls.js'
+import { getMovieData, getVideoData} from '../apiCalls.js'
 import './Movie.scss'
 import { Link } from 'react-router-dom'
 

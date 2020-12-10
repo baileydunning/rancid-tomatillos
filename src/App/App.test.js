@@ -2,6 +2,7 @@ import App from './App';
 import React from 'react'
 import { screen, render, waitFor, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { BrowserRouter } from 'react-router-dom';
 import { getAllMovies, getMovieData } from '../apiCalls.js'
 jest.mock('../apiCalls.js')
 
@@ -21,7 +22,7 @@ describe('App', () => {
       ]
     })
 
-    render(<App />)
+    render(<BrowserRouter><App /></BrowserRouter>)
   })
 
   it('should render App with fetched data', async () => {

@@ -3,7 +3,7 @@ import ThumbnailContainer from '../Thumbnail-Container/ThumbnailContainer.js'
 import Header from '../Header/Header.js'
 import Movie from '../Movie/Movie.js'
 import Search from '../Search/Search.js'
-import { getAllMovies, getMovieData, getVideoData} from '../apiCalls.js'
+import { getAllMovies, getMovieData } from '../apiCalls.js'
 import '../App/App.scss'
 import { Route, Switch } from 'react-router-dom'
 
@@ -43,15 +43,6 @@ class App extends Component {
     })
     .catch(error => this.setState({ error: error.message }))
   }
-  //
-  // findMovieById = (id) => {
-  //   getMovieData(id)
-  //   .then((data) => {
-  //     this.setState({ selectedMovie: data.movie })
-  //     this.findVideos()
-  //   })
-  //   .catch(error => this.setState({ error: error.message }))
-  // }
 
   get filteredMovies() {
     const newInput = this.state.input.toLowerCase().trim()
