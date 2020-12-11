@@ -54,7 +54,7 @@ class Movie extends Component {
               <p><b>Runtime:</b> { this.state.movie.runtime } minutes</p>
               { convertNumber(this.state.movie.budget, 'Budget') }
               { convertNumber(this.state.movie.revenue, 'Revenue') }
-              { genres && <p><b>Genres:</b><ul>{genres}</ul></p>}
+              {genres && <section><p><b>Genres:</b></p><ul>{genres}</ul></section>}
             </article>
             { this.state.video && <iframe data-testid="trailer" width="560" height="315" src={`https://www.youtube.com/embed/${this.state.video.key}`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> }
           </div>

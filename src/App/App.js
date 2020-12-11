@@ -66,13 +66,13 @@ class App extends Component {
         />
         <Switch>
           <Route
-            path={'/movie/:id'}
+            exact path={'/movie/:id'}
             render={ ({match}) => {
             return <Movie
-              displayHome={ this.displayHome }
-              selectMovie={ this.selectMovie }
               key={ match.params.id }
               id={ match.params.id }
+              displayHome={this.displayHome}
+              selectMovie={this.selectMovie}
             />
           }}
           />
