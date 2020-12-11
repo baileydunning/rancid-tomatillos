@@ -8,17 +8,22 @@ import { sampleData } from '../movieData.js'
 
 describe('ThumbnailContainer', () => {
   const mockDisplayMovie = jest.fn()
+  const history = createMemoryHistory()
 
   beforeEach(() => {
-    render(<Router history={ createMemoryHistory() }><ThumbnailContainer
-      displayMovie = { mockDisplayMovie }
-      movies = { sampleData }
-    /></Router>)
+    render(
+      <Router history={ history }>
+        <ThumbnailContainer
+          displayMovie = { mockDisplayMovie }
+          movies = { sampleData }
+        />
+      </Router>
+    )
   })
 
   it('should render all movie thumbnails', () => {
     const thumbnails = screen.getByTestId('thumbnail-container')
+    expect(history.location.pathname).toBe('/')
     expect(thumbnails).toBeInTheDocument()
   })
-
 })

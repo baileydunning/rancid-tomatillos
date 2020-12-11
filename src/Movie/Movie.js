@@ -12,6 +12,7 @@ class Movie extends Component {
       error: ''
     }
   }
+
   componentDidMount = () => {
     getMovieData(this.props.id)
     .then((data) => {
@@ -56,7 +57,7 @@ class Movie extends Component {
               { convertNumber(this.state.movie.revenue, 'Revenue') }
               {genres && <section><p><b>Genres:</b></p><ul>{genres}</ul></section>}
             </article>
-            { this.state.video && <iframe data-testid="trailer" width="560" height="315" src={`https://www.youtube.com/embed/${this.state.video.key}`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> }
+            { this.state.video && <iframe data-testid="trailer" width="560" height="315" src={`https://www.youtube.com/embed/${this.state.video.key}`} title="video trailer" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> }
           </div>
           <Link to="/"><button onClick={ () => this.props.displayHome() } className="back-button">Back to Main Page</button></Link>
         </section>

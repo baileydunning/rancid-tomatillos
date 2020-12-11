@@ -9,6 +9,8 @@ jest.mock('../apiCalls.js')
 
 
 describe('App', () => {
+  window.scrollTo = jest.fn()
+  
   beforeEach(() => {
     getAllMovies.mockResolvedValue({
       movies: [

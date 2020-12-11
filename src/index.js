@@ -4,6 +4,7 @@ import './index.css';
 import App from './App/App.js';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+// window.scrollTo(0, 0);
 
 const router = <BrowserRouter><App /></BrowserRouter>
 
