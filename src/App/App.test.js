@@ -1,14 +1,18 @@
-import App from './App';
+import App from './App'
 import React from 'react'
-import { screen, render, waitFor, fireEvent } from '@testing-library/react'
+import { screen, render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { getAllMovies, getMovieData } from '../apiCalls.js'
+import { BrowserRouter } from 'react-router-dom'
+import userEvent from '@testing-library/user-event'
+import { getAllMovies, getMovieData, getVideoData } from '../apiCalls.js'
 jest.mock('../apiCalls.js')
 
 
 describe('App', () => {
+  window.scrollTo = jest.fn()
+  
   beforeEach(() => {
-    getAllMovies.mockResolvedValueOnce({
+    getAllMovies.mockResolvedValue({
       movies: [
         {
           "id": 694919,
@@ -21,19 +25,7 @@ describe('App', () => {
       ]
     })
 
-    render(<App />)
-  })
-
-  it('should render App with fetched data', async () => {
-    const header = screen.getByText('RANCID TOMATILLOS')
-    const fetchedMovie = await waitFor(() => screen.getByTestId("individual-thumbnail"))
-
-    expect(header).toBeInTheDocument()
-    expect(fetchedMovie).toBeInTheDocument()
-  })
-
-  it('should render Movie when clicked', async () => {
-    getMovieData.mockResolvedValueOnce({
+    getMovieData.mockResolvedValue({
       movie: {
         "id": 694919,
         "title": "Money Plane",
@@ -51,9 +43,39 @@ describe('App', () => {
         "average_rating": 6.666666666666667
       }
     })
-    fireEvent.click(screen.getByAltText('movie-poster'))
-    const fetchedMovie = await waitFor(() => screen.getByText('82 minutes'))
+
+    getVideoData.mockResolvedValue({
+      videos: [
+        {
+          "id": 329,
+          "movie_id": 694919,
+          "key": "tJHcv0Pm0RU",
+          "site": "YouTube",
+          "type": "Trailer"
+        }
+      ]
+    })
+
+    render(<BrowserRouter><App /></BrowserRouter>)
+  })
+
+  it('should render App with fetched data', async () => {
+    const header = screen.getByText('RANCID TOMATILLOS')
+    const fetchedMovie = await waitFor(() => screen.getByTestId("individual-thumbnail"))
+  
+    expect(header).toBeInTheDocument()
+    // expect(history.location.pathname).toBe('/')
     expect(fetchedMovie).toBeInTheDocument()
+  })
+
+  it('should render Movie when clicked', async () => {
+    const moviePoster = await waitFor(() => screen.getByAltText('movie-poster'))
+    
+    userEvent.click(moviePoster)
+    // expect(history.location.pathname).toBe('/movie/694919')
+
+    const fetchedMovieSection = await waitFor(() => screen.getByTestId('movie-section'))
+    expect(fetchedMovieSection).toBeInTheDocument()
   })
 
   it('should return to the home page', async () => {
@@ -76,9 +98,9 @@ describe('App', () => {
       }
     })
 
-    fireEvent.click(screen.getByAltText('movie-poster'))
+    userEvent.click(screen.getByAltText('movie-poster'))
     const fetchedMovie = await waitFor(() => screen.getByText('82 minutes'))
-    fireEvent.click(screen.getByText("RANCID TOMATILLOS"))
+    userEvent.click(screen.getByText("RANCID TOMATILLOS"))
     const thumbnailContainer = screen.getByTestId('thumbnail-container')
 
     expect(thumbnailContainer).toBeInTheDocument()
