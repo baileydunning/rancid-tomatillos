@@ -82,11 +82,11 @@ class App extends Component {
               return (
               <section>
                 <Search
-                updateText={ this.updateText }
+                  updateText={ this.updateText }
                 />
                 <ThumbnailContainer
-                movies={this.filteredMovies}
-                displayMovie={this.displayMovie}
+                  movies={this.filteredMovies}
+                  displayMovie={this.displayMovie}
                 />
               </section> )
             }}
