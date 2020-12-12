@@ -60,7 +60,7 @@ class Movie extends Component {
               <Link to="/"><button onClick={() => this.props.displayHome()} className="back-button">Back to Main Page</button></Link>
             </article>
             <div>
-              {this.state.videos && <Videos videoData={this.state.videos} />}
+              {this.state.videos && <Videos videoData={ this.state.videos } key={ this.state.movie.id }/>}
             </div>
           </div>
         </section>
