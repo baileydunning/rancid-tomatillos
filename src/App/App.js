@@ -3,6 +3,7 @@ import ThumbnailContainer from '../Thumbnail-Container/ThumbnailContainer.js'
 import Header from '../Header/Header.js'
 import Movie from '../Movie/Movie.js'
 import Search from '../Search/Search.js'
+import RatingFilter from '../Rating-Filter/RatingFilter.js'
 import { getAllMovies, getMovieData } from '../apiCalls.js'
 import '../App/App.scss'
 import { Route, Switch } from 'react-router-dom'
@@ -13,6 +14,8 @@ class App extends Component {
     this.state = {
       movies: [],
       input: '',
+      minRating: 0,
+      maxRating: 10,
       selectedMovie: null,
       error: ''
     }
@@ -46,15 +49,22 @@ class App extends Component {
 
   get filteredMovies() {
     const newInput = this.state.input.toLowerCase().trim()
-    const userSearchResults = this.state.movies.filter(movie => {
+    const min = this.state.minRating;
+    const max = this.state.maxRating;
+    const userFilterResult = this.state.movies.filter(movie => {
+      return movie.average_rating.toFixed(0) >= min && movie.average_rating.toFixed(0) <= max;
+    })
+    return userFilterResult.filter(movie => {
       return movie.title.toLowerCase().includes(newInput)
     })
-
-    return newInput ? userSearchResults : this.state.movies
   }
 
   updateText = (userInput) => {
     this.setState({ input: userInput })
+  }
+
+  updateRating = (min, max) => {
+    this.setState({ minRating: min, maxRating: max })
   }
 
   render() {
@@ -71,8 +81,8 @@ class App extends Component {
             return <Movie
               key={ match.params.id }
               id={ match.params.id }
-              displayHome={this.displayHome}
-              selectMovie={this.selectMovie}
+              displayHome={ this.displayHome }
+              selectMovie={ this.selectMovie }
             />
           }}
           />
@@ -84,9 +94,12 @@ class App extends Component {
                 <Search
                   updateText={ this.updateText }
                 />
+                <RatingFilter
+                  updateRating={ this.updateRating }
+                />
                 <ThumbnailContainer
-                  movies={this.filteredMovies}
-                  displayMovie={this.displayMovie}
+                  movies={ this.filteredMovies }
+                  displayMovie={ this.displayMovie }
                 />
               </section> )
             }}
