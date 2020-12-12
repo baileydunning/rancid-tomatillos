@@ -1,6 +1,6 @@
 import React from 'react'
 import Search from './Search'
-import { screen, render, fireEvent } from '@testing-library/react'
+import { screen, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import userEvent from '@testing-library/user-event'
 
