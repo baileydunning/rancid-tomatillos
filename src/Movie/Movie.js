@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import { getMovieData, getVideoData} from '../apiCalls.js'
 import './Movie.scss'
 import { Link } from 'react-router-dom'
+import Videos from '../Videos/Videos.js'
 
 class Movie extends Component {
   constructor() {
     super()
     this.state = {
       movie: null,
-      video: [],
+      videos: [],
       error: ''
     }
   }
@@ -25,18 +26,18 @@ class Movie extends Component {
 
   findVideos = () => {
     getVideoData(this.state.movie.id)
-    .then(data => this.setState({ video: data.videos.find(video => video.type === 'Trailer') }))
+    .then(data => this.setState({ videos: data.videos }))
     .catch(error => this.setState({ error: error.message }))
   }
 
   render() {
     if (this.state.movie) {
       const genres = this.state.movie.genres.map(genre => {
-        return (<li key={genre}>{ genre }</li>)
+        return (<li key={genre}>{genre}</li>)
       })
 
       const convertNumber = (num, type) => {
-        return (num > 0 && <p><b>{ type }:</b> ${new Intl.NumberFormat('en-US').format(num)}</p>)
+        return (num > 0 && <p><b>{type}:</b> ${new Intl.NumberFormat('en-US').format(num)}</p>)
       }
       return (
         <section className='movie-section' data-testid="movie-section">
@@ -56,10 +57,12 @@ class Movie extends Component {
               { convertNumber(this.state.movie.budget, 'Budget') }
               { convertNumber(this.state.movie.revenue, 'Revenue') }
               {genres && <section><p><b>Genres:</b></p><ul>{genres}</ul></section>}
+              <Link to="/"><button onClick={() => this.props.displayHome()} className="back-button">Back to Main Page</button></Link>
             </article>
-            { this.state.video && <iframe data-testid="trailer" width="560" height="315" src={`https://www.youtube.com/embed/${this.state.video.key}`} title="video trailer" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> }
+            <div>
+              {this.state.videos && <Videos videoData={this.state.videos} />}
+            </div>
           </div>
-          <Link to="/"><button onClick={ () => this.props.displayHome() } className="back-button">Back to Main Page</button></Link>
         </section>
       )
     } else {
