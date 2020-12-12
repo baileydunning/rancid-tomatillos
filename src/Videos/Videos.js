@@ -7,7 +7,7 @@ import './Videos.scss'
 const Videos = ({ videoData }) => {
   const reactPlayers = videoData.map(video => {
     return (
-      <div className="youtube-video">
+      <div className="youtube-video" key={ video.id }>
         <ReactPlayer 
           key={ video.id }
           width={ '60vw' }
