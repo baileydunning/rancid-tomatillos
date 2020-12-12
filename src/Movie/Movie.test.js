@@ -61,13 +61,13 @@ describe('Movie', () => {
     const movieRating = screen.getByText('5.0');
     const moviePoster = screen.getByAltText('movie-poster')
     const releaseDate = screen.getByText('Wed Aug 05 2020')
-    const trailer = screen.getByTestId('trailer')
+    const trailers = screen.getByTestId('videos-section')
 
     expect(movieTitle).toBeInTheDocument()
     expect(movieRating).toBeInTheDocument()
     expect(moviePoster).toBeInTheDocument()
     expect(releaseDate).toBeInTheDocument()
-    expect(trailer).toBeInTheDocument()
+    expect(trailers).toBeInTheDocument()
   })
 
 })
