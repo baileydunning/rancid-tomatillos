@@ -11,6 +11,7 @@
   justify-content: space-around;
   align-items: center;
   height: 300px;
+  overflow: scroll;
   background: rgba(255, 255, 255, 0.75);
 }
 
@@ -42,4 +43,18 @@
   justify-content: space-around;
   flex-direction: row;
   padding: 10px;
+}
+
+.back-button {
+  font-size: 15px;
+  color: white;
+  text-align: center;
+  background-color: hsla(328, 100%, 0%, 0.81) ;
+  padding: 10px;
+  align-self: center;
+  border: 2px solid black;
+  cursor: pointer;
+  &:hover {
+    background-color: green;
+  }
 }

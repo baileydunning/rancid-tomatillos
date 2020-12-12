@@ -18,7 +18,14 @@ class Search extends Component {
     return (
       <form className="search-container">
         <label htmlFor="search-bar"></label>
-        <input type="text" name="search-bar" className="search-bar" value={this.state.input} onChange={ this.handleChange } placeholder="Search by movie title"></input>
+        <input 
+          type="text" 
+          name="search-bar" 
+          className="search-bar" 
+          value={this.state.input} 
+          onChange={ this.handleChange } 
+          placeholder="Search by movie title">
+        </input>
       </form>
     )
   }

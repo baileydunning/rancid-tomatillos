@@ -1,3 +1,8 @@
 .videos-section {
-  max-width: 80vw
+  width: 60vw;
+  height: auto;
+}
+
+.youtube-video {
+  object-fit: cover;
 }

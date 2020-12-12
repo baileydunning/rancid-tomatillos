@@ -57,12 +57,12 @@ class Movie extends Component {
               { convertNumber(this.state.movie.budget, 'Budget') }
               { convertNumber(this.state.movie.revenue, 'Revenue') }
               {genres && <section><p><b>Genres:</b></p><ul>{genres}</ul></section>}
+              <Link to="/"><button onClick={() => this.props.displayHome()} className="back-button">Back to Main Page</button></Link>
             </article>
+            <div>
+              {this.state.videos && <Videos videoData={this.state.videos} />}
+            </div>
           </div>
-          <div>
-            {this.state.videos && <Videos videoData={this.state.videos} />}
-          </div>
-          <Link to="/"><button onClick={ () => this.props.displayHome() } className="back-button">Back to Main Page</button></Link>
         </section>
       )
     } else {
