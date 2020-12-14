@@ -13,7 +13,7 @@ describe('Header', () => {
     render(
       <Router history = { history }>
         <Header
-          selectedMovie={ null }
+          selectedMovie={ {title: 'Fake Movie Title'} }
           displayHome={ mockDisplayHome }
         />
       </Router>
@@ -21,12 +21,12 @@ describe('Header', () => {
   })
 
   it('should render a header', () => {
-    let header = screen.getByText("RANCID TOMATILLOS")
-    expect(header).toBeInTheDocument();
+    let headerButton = screen.getByTestId('header-button')
+    expect(headerButton).toBeInTheDocument();
   })
 
   it('should call displayHome', () => {
-    let headerButton = screen.getByRole("button")
+    let headerButton = screen.getByTestId('header-button')
     fireEvent.click(headerButton)
     expect(mockDisplayHome).toHaveBeenCalled()
   })

@@ -15,7 +15,8 @@ const Header = ({ selectedMovie, displayHome }) => {
           onClick={ () => displayHome() }
           disabled={ !selectedMovie }>
           <h1 
-            className="header-text">
+            className="header-text"
+            data-testid='header-button'>
             RANCID<br></br>TOMATILLOS
           </h1>
         </button>

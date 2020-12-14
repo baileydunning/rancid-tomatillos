@@ -60,21 +60,18 @@ describe('App', () => {
   })
 
   it('should render App with fetched data', async () => {
-    const header = screen.getByText('RANCID TOMATILLOS')
+    const header = screen.getByTestId('header-button')
     const fetchedMovie = await waitFor(() => screen.getByTestId("individual-thumbnail"))
   
     expect(header).toBeInTheDocument()
-    // expect(history.location.pathname).toBe('/')
     expect(fetchedMovie).toBeInTheDocument()
   })
 
   it('should render Movie when clicked', async () => {
-    const moviePoster = await waitFor(() => screen.getByAltText('movie-poster'))
-    
+    const moviePoster = await waitFor(() => screen.getByAltText('movie-poster-694919'))
     userEvent.click(moviePoster)
-    // expect(history.location.pathname).toBe('/movie/694919')
-
     const fetchedMovieSection = await waitFor(() => screen.getByTestId('movie-section'))
+    
     expect(fetchedMovieSection).toBeInTheDocument()
   })
 
@@ -99,8 +96,8 @@ describe('App', () => {
     })
 
     userEvent.click(screen.getByAltText('movie-poster'))
-    const fetchedMovie = await waitFor(() => screen.getByText('82 minutes'))
-    userEvent.click(screen.getByText("RANCID TOMATILLOS"))
+    const fetchedMovie = await waitFor(() => screen.getByText('Genres:'))
+    userEvent.click(screen.getByTestId('header-button'))
     const thumbnailContainer = screen.getByTestId('thumbnail-container')
 
     expect(thumbnailContainer).toBeInTheDocument()
