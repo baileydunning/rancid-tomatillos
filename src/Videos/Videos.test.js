@@ -5,20 +5,21 @@ import Videos from './Videos.js'
 
 describe('Videos', () => {
   const videoData = [
-      {
-        "id": 329,
-        "movie_id": 659991,
-        "key": "tJHcv0Pm0RU",
-        "site": "YouTube",
-        "type": "Trailer"
-      },
-      {
-        "id": 330,
-        "movie_id": 659991,
-        "key": "IpSK2CsKULg",
-        "site": "YouTube",
-        "type": "Teaser"
-      }]
+    {
+      "id": 329,
+      "movie_id": 659991,
+      "key": "tJHcv0Pm0RU",
+      "site": "YouTube",
+      "type": "Trailer"
+    },
+    {
+      "id": 330,
+      "movie_id": 659991,
+      "key": "IpSK2CsKULg",
+      "site": "YouTube",
+      "type": "Teaser"
+    }
+  ]
 
   beforeEach(() => {
     render(<Videos videoData={ videoData } key={ 659991 }/>)
@@ -26,6 +27,7 @@ describe('Videos', () => {
 
   it('should render the Videos component', () => {
     const videosSection = screen.getByTestId('videos-section')
+
     expect(videosSection).toBeInTheDocument()
   })
 

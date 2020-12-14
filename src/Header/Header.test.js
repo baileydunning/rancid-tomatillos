@@ -22,12 +22,14 @@ describe('Header', () => {
 
   it('should render a header', () => {
     let headerButton = screen.getByTestId('header-button')
+
     expect(headerButton).toBeInTheDocument();
   })
 
   it('should call displayHome', () => {
     let headerButton = screen.getByTestId('header-button')
     fireEvent.click(headerButton)
+
     expect(mockDisplayHome).toHaveBeenCalled()
   })
 })

@@ -18,14 +18,16 @@ describe('RatingFilter', () => {
   it('should render min and max inputs on the home page', () => {
     const min = screen.getByPlaceholderText("min");
     const max = screen.getByPlaceholderText("max");
+
     expect(min).toBeInTheDocument();
     expect(max).toBeInTheDocument();
   })
 
   it('should call updateText on change', () => {
     const min = screen.getByPlaceholderText("min");
-    userEvent.type(min, "7")
-    expect(mockUpdateRating).toHaveBeenCalled()
-    expect(min.value).toBe("7")
+    userEvent.type(min, "7");
+
+    expect(mockUpdateRating).toHaveBeenCalled();
+    expect(min.value).toBe("7");
   })
 })

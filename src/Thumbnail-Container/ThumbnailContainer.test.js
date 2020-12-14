@@ -7,8 +7,8 @@ import { createMemoryHistory } from 'history'
 import { sampleData } from '../movieData.js'
 
 describe('ThumbnailContainer', () => {
-  const mockDisplayMovie = jest.fn()
-  const history = createMemoryHistory()
+  const mockDisplayMovie = jest.fn();
+  const history = createMemoryHistory();
 
   beforeEach(() => {
     render(
@@ -22,8 +22,9 @@ describe('ThumbnailContainer', () => {
   })
 
   it('should render all movie thumbnails', () => {
-    const thumbnails = screen.getByTestId('thumbnail-container')
-    expect(history.location.pathname).toBe('/')
-    expect(thumbnails).toBeInTheDocument()
+    const thumbnails = screen.getByTestId('thumbnail-container');
+
+    expect(history.location.pathname).toBe('/');
+    expect(thumbnails).toBeInTheDocument();
   })
 })

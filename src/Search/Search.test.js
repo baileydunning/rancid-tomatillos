@@ -17,6 +17,7 @@ describe('Search', () => {
 
   it('should render the search bar', () => {
     const searchBar = screen.getByPlaceholderText('Search by movie title')
+    
     expect(searchBar).toBeInTheDocument()
   })
 

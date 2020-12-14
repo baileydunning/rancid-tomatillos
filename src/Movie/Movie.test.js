@@ -43,7 +43,7 @@ describe('Movie', () => {
         }
       ]
     })
-  
+
     render(
       <Router history={createMemoryHistory()}>
         <Movie
@@ -69,5 +69,4 @@ describe('Movie', () => {
     expect(releaseDate).toBeInTheDocument()
     expect(trailers).toBeInTheDocument()
   })
-
 })
