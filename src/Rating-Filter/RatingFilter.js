@@ -18,12 +18,31 @@ class RatingFilter extends Component {
 
   render() {
     return (
-      <form >
-        <label htmlFor="minRating">Minimum Rating:</label>
-        <input type="number" name="minRating" value={ this.state.minRating } onChange={ this.handleChange } min="0" max="9" placeholder="min"></input>
-        <label htmlFor="maxRating">Maximum Rating:</label>
-        <input type="number" name="maxRating" value={ this.state.maxRating } onChange={ this.handleChange } min="1" max="10" placeholder="max"></input>
-      </form>
+      <section className="rating-filter">
+        <h3>FILTER BY AVERAGE RATING:</h3>
+        <form className="rating-filter-form">
+          <label htmlFor="minRating">Minimum Rating: </label>
+          <input
+            type="number"
+            name="minRating"
+            value={this.state.minRating}
+            onChange={this.handleChange}
+            min="0"
+            max={this.state.maxRating}
+            placeholder="min">
+          </input>
+          <label htmlFor="maxRating">Maximum Rating: </label>
+          <input
+            type="number"
+            name="maxRating"
+            value={this.state.maxRating}
+            onChange={this.handleChange}
+            min={this.state.minRating}
+            max="10"
+            placeholder="max">
+          </input>
+        </form>
+      </section>
     )
   }
 }

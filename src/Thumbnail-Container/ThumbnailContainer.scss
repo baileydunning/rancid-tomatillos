@@ -3,4 +3,8 @@
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
+  margin-right: 40px;
+  @media (max-width: 800px) {
+    flex-direction: column !important;
+  }
 }

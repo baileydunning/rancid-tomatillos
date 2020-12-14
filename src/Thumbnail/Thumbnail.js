@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import './Thumbnail.scss';
 
-const Thumbnail = ({ poster, title, rating, id, displayMovie }) => {
+const Thumbnail = ({ poster, title, rating, id }) => {
   return (
-    <section className='thumbnail' data-testid="individual-thumbnail">
+    <section className='thumbnail' data-testid="individual-thumbnail" key={`thumbnail-${title}`}>
       <Link to={`/movie/${id}`}>
-        <img alt='movie-poster' className="movie-poster-image" src={ poster }></img>
+        <img alt={`movie-poster-${id}`} className="movie-poster-image" src={ poster }></img>
       </Link>
       <div className="thumbnail-display-info">
         <h3>{title}</h3>

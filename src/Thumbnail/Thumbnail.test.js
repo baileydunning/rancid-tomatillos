@@ -29,7 +29,7 @@ describe('Thumbnail', () => {
   it('should render a movie thumbnail', () => {
     const movieTitle = screen.getByText('Best Movie Ever!');
     const movieRating = screen.getByText('Avg Rating: 7');
-    const moviePoster = screen.getByAltText('movie-poster')
+    const moviePoster = screen.getByAltText('movie-poster-17')
     
     expect(history.location.pathname).toBe('/')
     expect(movieTitle).toBeInTheDocument()
@@ -38,7 +38,7 @@ describe('Thumbnail', () => {
   })
 
   it('should redirect to movie page on click', () => {
-    const moviePosterButton = screen.getByAltText('movie-poster');
+    const moviePosterButton = screen.getByAltText('movie-poster-17');
     fireEvent.click(moviePosterButton)
  
     expect(history.location.pathname).toBe('/movie/17')

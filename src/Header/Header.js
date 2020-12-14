@@ -9,7 +9,18 @@ const Header = ({ selectedMovie, displayHome }) => {
 
   return (
     <header className='header' style={{ background: `url(${determineBackground()})`}}>
-      <Link to='/'><button onClick={ () => displayHome() }><h1>RANCID TOMATILLOS</h1></button></Link>
+      <Link to='/'>
+        <button
+          className='header-button'
+          onClick={ () => displayHome() }
+          disabled={ !selectedMovie }>
+          <h1 
+            className="header-text"
+            data-testid='header-button'>
+            RANCID<br></br>TOMATILLOS
+          </h1>
+        </button>
+      </Link>
     </header>
   )
 }
