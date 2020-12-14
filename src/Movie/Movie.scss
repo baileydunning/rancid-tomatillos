@@ -9,6 +9,9 @@
   justify-content: space-around;
   align-items: center;
   height: 500px;
+  @media (max-width: 800px) {
+    flex-direction: column !important;
+  }
 }
 
 
@@ -40,6 +43,9 @@
   justify-content: space-around;
   flex-direction: row;
   padding: 10px;
+  @media (max-width: 800px) {
+    flex-direction: column !important;
+  }
 }
 
 .back-button {

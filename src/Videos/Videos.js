@@ -7,7 +7,11 @@ import './Videos.scss'
 const Videos = ({ videoData }) => {
   let renderThumbs = (children) => {
     return children.map(child => {
-      return <img src={`https://img.youtube.com/vi/${child.props.children.props.videoKey}/default.jpg`} alt={`youtube-thumbnail-${child.props.children.props.videoKey}`} />
+      return <img 
+                src={ `https://img.youtube.com/vi/${child.props.children.props.videokey}/default.jpg` } 
+                alt={ `youtube-thumbnail-${child.key}` } 
+                key={ child.key }
+              />
   }) 
 }
 
@@ -16,7 +20,7 @@ const Videos = ({ videoData }) => {
       <div className="youtube-video" key={ video.id }>
         <ReactPlayer 
           key={ video.id }
-          videoKey={ video.key }
+          videokey={ video.key }
           width={ '60vw' }
           playing={ false } 
           url={ `https://www.youtube.com/embed/${video.key}` } 
