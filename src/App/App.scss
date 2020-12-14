@@ -9,3 +9,11 @@ button {
   background: none;
   outline: none;
 }
+
+.search-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin-top: -35px;
+}

@@ -1,0 +1,17 @@
+.rating-filter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin: -30px 0px 20px 0px;
+}
+
+.rating-filter-form {
+  flex-direction: row;
+  justify-content: center;
+}
+
+input {
+  margin: 10px;
+}

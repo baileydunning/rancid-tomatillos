@@ -67,6 +67,14 @@ class App extends Component {
     this.setState({ minRating: min, maxRating: max })
   }
 
+  showRatingFilter = () => {
+    return (
+      <RatingFilter
+        updateRating={this.updateRating}
+      />
+    )
+  }
+
   render() {
     return (
       <main className='App'>
@@ -91,12 +99,14 @@ class App extends Component {
             render={ () => {
               return (
               <section>
-                <Search
-                  updateText={ this.updateText }
-                />
-                <RatingFilter
-                  updateRating={ this.updateRating }
-                />
+                  <section className="search-area" style={{ backgroundColor: 'hsl(360, 0%, 13%)' }}>
+                  <Search
+                    updateText={this.updateText}
+                  />
+                  <RatingFilter
+                    updateRating={this.updateRating}
+                  />
+                </section>
                 <ThumbnailContainer
                   movies={ this.filteredMovies }
                   displayMovie={ this.displayMovie }
