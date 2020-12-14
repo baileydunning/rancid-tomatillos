@@ -7,7 +7,7 @@ import './Videos.scss'
 const Videos = ({ videoData }) => {
   let renderThumbs = (children) => {
     return children.map(child => {
-      return <img src={`https://img.youtube.com/vi/${child.props.children.props.videoKey}/default.jpg`} alt="youtube-thumbnail-image" />
+      return <img src={`https://img.youtube.com/vi/${child.props.children.props.videoKey}/default.jpg`} alt={`youtube-thumbnail-${child.props.children.props.videoKey}`} />
   }) 
 }
 
