@@ -79,8 +79,8 @@ class App extends Component {
     return (
       <main className='App'>
         <Header
-        selectedMovie={ this.state.selectedMovie }
-        displayHome={ this.displayHome }
+          selectedMovie={ this.state.selectedMovie }
+          displayHome={ this.displayHome }
         />
         <Switch>
           <Route
@@ -98,20 +98,20 @@ class App extends Component {
             path="/"
             render={ () => {
               return (
-              <section>
-                  <section className="search-area" style={{ backgroundColor: 'hsl(360, 0%, 13%)' }}>
-                  <Search
-                    updateText={this.updateText}
-                  />
-                  <RatingFilter
-                    updateRating={this.updateRating}
-                  />
-                </section>
-                <ThumbnailContainer
-                  movies={ this.filteredMovies }
-                  displayMovie={ this.displayMovie }
-                />
-              </section> )
+                <section>
+                    <section className="search-area" style={{ backgroundColor: 'hsl(360, 0%, 13%)' }}>
+                    <Search
+                      updateText={this.updateText}
+                    />
+                    <RatingFilter
+                      updateRating={this.updateRating}
+                    />
+                    </section>
+                    <ThumbnailContainer
+                      movies={ this.filteredMovies }
+                      displayMovie={ this.displayMovie }
+                    />
+                </section> )
             }}
           />
         </Switch>

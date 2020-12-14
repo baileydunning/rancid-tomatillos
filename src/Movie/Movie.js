@@ -48,8 +48,8 @@ class Movie extends Component {
               { this.state.movie.tagline && <h3>{ this.state.movie.tagline }</h3> }
               <p>{ this.state.movie.overview }</p>
             </div>
-            </article>
-          <div className="details">
+          </article>
+          <section className="details">
             <article className="more-info">
               <p><b>Average Rating:</b> { this.state.movie.average_rating.toFixed(1) }</p>
               <p><b>Release Date:</b> { new Date(this.state.movie.release_date).toDateString() }</p>
@@ -62,7 +62,7 @@ class Movie extends Component {
             <div>
               {this.state.videos && <Videos videoData={ this.state.videos } key={ this.state.movie.id }/>}
             </div>
-          </div>
+          </section>
         </section>
       )
     } else {
